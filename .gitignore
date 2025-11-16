@@ -1,0 +1,49 @@
+# -----------------------
+# Python / uv environments
+# -----------------------
+.venv/
+uv.lock.bk
+
+# Bytecode
+__pycache__/
+*.pyc
+
+# -----------------------
+# Jupyter / Jupytext
+# -----------------------
+# Ignore notebook JSON files entirely
+notebooks/*.ipynb
+notebooks/.ipynb_checkpoints/
+
+# Jupyter metadata folders
+.ipynb_checkpoints/
+.jupyter/
+
+# -----------------------
+# Data (never commit datasets)
+# -----------------------
+data/
+*/data/
+
+# -----------------------
+# Secrets
+# -----------------------
+.kaggle/
+.env
+.python-version
+
+# -----------------------
+# Generated artifacts
+# -----------------------
+*.zip
+*.tar
+*.tar.gz
+*.csv
+*.parquet
+
+# -----------------------
+# Project structure
+# -----------------------
+# Keep paired .py files ONLY in src/
+# So if someone accidentally writes .py in notebooks/, ignore it
+notebooks/*.py
