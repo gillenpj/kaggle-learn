@@ -7,6 +7,7 @@ The material spans a broad range of data skills — from modelling, data handlin
 
 ## Structure
 
+```
 kaggle_learn/
 ├── notebooks/ # One notebook per course (ignored in git)
 ├── src/ # Paired scripts for each notebook
@@ -16,7 +17,7 @@ kaggle_learn/
 ├── jupytext.toml
 ├── .gitignore
 └── README.md
-
+```
 
 - **notebooks/** — interactive `.ipynb` files (excluded from version control)  
 - **src/** — paired `.py` scripts generated via Jupytext (tracked)  
