@@ -1,21 +1,21 @@
 # Kaggle Learn
 
 This repository contains my work across the Kaggle Learn curriculum.  
-The material spans a broad range of data skills — from modelling, data handling, and visualisation to advanced areas such as feature engineering, deep learning, computer vision, time series, geospatial analysis, explainability, reinforcement learning, and complex SQL analytics.
+The material spans a broad range of data skills — from modelling, data handling, and visualisation to advanced areas such as feature engineering, deep learning, computer vision, time series, geospatial analysis, explainability, reinforcement learning, and advanced SQL analytics.
 
 ---
 
 ## Structure
 
 kaggle_learn/
-notebooks/ (one notebook per course, ignored in git)
-src/ (paired scripts for each notebook)
-data/ (local datasets, ignored)
-pyproject.toml
-uv.lock
-jupytext.toml
-.gitignore
-README.md
+├── notebooks/ # One notebook per course (ignored in git)
+├── src/ # Paired scripts for each notebook
+├── data/ # Local datasets (ignored in git)
+├── pyproject.toml
+├── uv.lock
+├── jupytext.toml
+├── .gitignore
+└── README.md
 
 
 - **notebooks/** — interactive `.ipynb` files (excluded from version control)  
