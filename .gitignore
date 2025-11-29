@@ -2,6 +2,7 @@
 # Python / uv environments
 # -----------------------
 .venv/
+uv.lock
 uv.lock.bk
 
 # Bytecode
