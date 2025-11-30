@@ -156,3 +156,41 @@ print(reviews.groupby(['country', 'variety']).description.agg(['count']).sort_va
 # # Data Types and Missing Values
 
 # %%
+reviews.price.dtype
+
+# %%
+reviews.dtypes
+
+# %%
+reviews.index.dtype
+
+# %%
+reviews.points.dtype
+
+# %%
+reviews.points.astype(str)
+
+# %%
+n_missing_values = reviews.price.isna().sum()
+
+# %%
+print(n_missing_values)
+
+# %%
+reviews['region_1'] = reviews.region_1.map(lambda x: 'Unknown' if pd.isna(x) else x)
+
+# %%
+reviews['region_1'].value_counts()
+
+# %% [markdown]
+# # Renaming and Combining
+
+# %%
+reviews2 = reviews.rename({'region_1': 'region', 'region_2': 'locale'})
+
+# %%
+reviews2.index.name = 'wines'
+
+# %%
+# concatenation
+# join, on common index/indices
