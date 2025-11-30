@@ -34,7 +34,7 @@ reviews.iloc[-5, :]
 
 # %%
 reviews.index
-    
+
 
 # %%
 reviews.set_index('title')
@@ -79,9 +79,80 @@ italian_wines = reviews.loc[reviews.country == 'Italy', :]
 reviews.columns
 
 # %%
+reviews.columns
+
+# %%
 top_oceania_wines = reviews.loc[reviews.country.isin(['New Zealand', 'Australia']) & (reviews.points >= 95)]
 
 # %%
-top_oceania_wines
+reviews.columns
+
+
+# %%
+def star_rating(points):
+    if points >= 95:
+        return '***'
+    elif points >= 85:
+        return '**'
+    else:
+        return '*'
+
+reviews.groupby(reviews.points.map(star_rating))['price'].mean().rename('mean_price')
+
+
+# %% [markdown]
+# # Applying a function to each row (axis = 1)
+
+# %%
+def points_per_price(row):
+    return row['points'] / row['price']
+
+reviews['value'] = reviews.apply(points_per_price, axis=1)
+
+# %%
+reviews
+
+# %% [markdown]
+# # Apply a function to each column (axis=0)
+
+# %%
+pd.set_option('display.max_rows', None)       # show all rows in any output
+pd.set_option('display.max_columns', None)    # show all columns if needed
+
+reviews.apply(lambda col: col.isna().sum(), axis=0)
+
+# %%
+pd.reset_option('display.max_rows')
+pd.reset_option('display.max_columns')
+
+# %%
+print(reviews.apply(lambda col: col.isna().sum(), axis=0))
+
+# %% [markdown]
+# # Grouping and Sorting
+
+# %%
+reviews.taster_twitter_handle.value_counts()
+
+# %%
+reviews.groupby('price').points.max()
+
+# %%
+reviews.variety
+
+# %%
+reviews.groupby('variety').price.agg(['max', 'min']).sort_values(by='max', ascending=False)
+
+# %%
+reviewer_mean_ratings = reviews.groupby('taster_name').price.mean()
+
+# %%
+reviewer_mean_ratings.describe()
+
+# %%
+print(reviews.groupby(['country', 'variety']).description.agg(['count']).sort_values(by='count', ascending=False))
+
+# %% [markdown]
+# # Data Types and Missing Values
 
 # %%
