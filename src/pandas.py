@@ -122,7 +122,7 @@ def star_rating(row):
     else:
         return '*'
 
-reviews.groupby(reviews.points.map(star_rating))['price'].mean().rename('mean_price')
+reviews.groupby(reviews.apply(star_rating, axis=1))['price'].mean().rename('mean_price')
 
 # %% [markdown]
 # # Applying a function to each row (axis = 1)
