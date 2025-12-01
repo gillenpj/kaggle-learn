@@ -35,7 +35,6 @@ reviews.iloc[-5, :]
 # %%
 reviews.index
 
-
 # %%
 reviews.set_index('title')
 
@@ -87,18 +86,43 @@ top_oceania_wines = reviews.loc[reviews.country.isin(['New Zealand', 'Australia'
 # %%
 reviews.columns
 
+# %%
+reviews.points.mean()
 
 # %%
-def star_rating(points):
-    if points >= 95:
+reviews.country.unique()
+
+# %%
+reviews.country.value_counts()
+
+# %%
+centred_price = reviews.price - reviews.price.mean()
+
+# %%
+points_to_price = reviews.points / reviews.price
+
+# %%
+points_to_price.max()
+
+# %%
+reviews.loc[points_to_price == points_to_price.max(), 'title']
+
+# %%
+descriptor_counts = [reviews.description.str.contains('tropical').sum(), reviews.description.str.contains('fruit').sum()]
+
+# %%
+descriptor_counts
+
+# %%
+def star_rating(row):
+    if row.country == 'Canada' or row.points >= 95:
         return '***'
-    elif points >= 85:
+    elif row.points >= 85:
         return '**'
     else:
         return '*'
 
 reviews.groupby(reviews.points.map(star_rating))['price'].mean().rename('mean_price')
-
 
 # %% [markdown]
 # # Applying a function to each row (axis = 1)
